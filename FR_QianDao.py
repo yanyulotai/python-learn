@@ -7,9 +7,11 @@ class SigninFanRuan:
     def __init__(self):
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
+
+    def login(self):
+
         self.driver = webdriver.Chrome("C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe")
         self.wait = WebDriverWait(self.driver, 10)
-    def login(self):
         self.driver.get('http://id.fanruan.com/login/login.php?clue=bbs&referrer=http%3A%2F%2Fbbs.fanruan.com%2F')
         # 显式获取用户名输入框并输入用户名
         username = self.wait.until(lambda s: s.find_element_by_xpath('//aside[@class="typeArea"]//input[@type="text"]'))
@@ -38,6 +40,7 @@ class SigninFanRuan:
 
         # 关闭浏览器
         self.driver.quit()
+
 
 if __name__ == '__main__':
     broeser = SigninFanRuan()
