@@ -49,7 +49,7 @@ if __name__ == '__main__':
         current_time = int(data_time[11:13])
         print('当前小时：'+str(current_time))
         print('当前时间：'+str(data_time))
-        if current_time == 9:
+        if current_time == 8:
             broeser.login()
             print('签到完成')
             time.sleep(3580)
