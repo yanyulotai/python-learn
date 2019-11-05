@@ -2,6 +2,7 @@
 
 import urllib.request
 import datetime
+import os
 import time
 import random
 
@@ -15,6 +16,7 @@ class get_renminrb:
             u = urllib.request.urlopen(url)
             url_code = u.status
             # print(url_status)
+            # print(url_code)
             if url_code == 200:
                 f = open(file_name, 'wb')
                 block_sz = 8192
@@ -28,11 +30,13 @@ class get_renminrb:
                 url_status = True
             # print("url_status : " + str(url_status))
             return url_status
-        except:
+        except Exception as e:
+            # print(e)
+            # print("友情提示：检查是否有该文件夹")
             return False
 
     def request_url(self, search_date, i):
-        file_path = "F:/rmrb2018/"
+        file_path = "F:/rmrb2019/"
         year = str(search_date[0: 4])
         month = str(search_date[5: 7])
         day = str(search_date[-2:])
@@ -58,10 +62,11 @@ class get_renminrb:
 
 if __name__ == '__main__':
     rmrb = get_renminrb()
-    # search_date = "2019-08-07"
-    begin = datetime.date(2018, 1, 1)
-    end = datetime.date(2018, 12, 31)
-    for i in range((end - begin).days + 1):
-        day = begin + datetime.timedelta(days=i)
-        search_date = str(day)
-        rmrb.request_url(search_date, 1)
+    search_date = "2019-09-17"
+    rmrb.request_url(search_date, 1)
+    # begin = datetime.date(2019, 8, 15)
+    # end = datetime.date(2019, 8, 15)
+    # for i in range((end - begin).days + 1):
+    #     day = begin + datetime.timedelta(days=i)
+    #    search_date = str(day)
+    #    rmrb.request_url(search_date, 1)
